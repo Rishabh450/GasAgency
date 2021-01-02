@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "879174662661",
+    "project_id": "sudiksha-gas-age-1609415532874",
+    "storage_bucket": "sudiksha-gas-age-1609415532874.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:879174662661:android:52c3b0b8f993b982683a6c",
+        "android_client_info": {
+          "package_name": "com.example.sudikshagasagency"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "879174662661-eo9frj22im34q4630f5t749vdpa4tkdk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAxCgqGoX491-MBxqoCdZKMbJXjDQAKi7c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "879174662661-eo9frj22im34q4630f5t749vdpa4tkdk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

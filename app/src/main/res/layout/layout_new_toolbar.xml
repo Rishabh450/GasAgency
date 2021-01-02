@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:weightSum="100"
+    android:background="#FA0404"
+    android:gravity="center_vertical">
+
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="100"
+        android:id="@+id/title_new"
+        android:textStyle="bold"
+        android:text="SUDIKSHA INDANE GAS AGENCY"
+        android:textColor="#fff"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:visibility="visible"/>
+
+
+
+
+</LinearLayout>
+
