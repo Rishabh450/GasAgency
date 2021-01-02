@@ -2,12 +2,29 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/Signin"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.SignInActivity">
+    tools:context=".Activity.SignInActivity"
+    android:orientation="vertical">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/toolbar3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#FFC81406">
+
+            <include layout="@layout/layout_new_toolbar"></include>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
     <com.google.android.gms.common.SignInButton
+        android:id="@+id/Signin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"

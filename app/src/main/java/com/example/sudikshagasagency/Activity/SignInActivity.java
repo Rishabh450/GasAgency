@@ -13,11 +13,12 @@ import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 
 public class SignInActivity extends AppCompatActivity {
-Button button;
+SignInButton button;
 GoogleSignInClient mGoogleSignInClient;
 int RC_SIGN_IN=0;
     @Override
