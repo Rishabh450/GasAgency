@@ -37,7 +37,7 @@ public class AddRecordFragment extends Fragment implements AdapterView.OnItemSel
     Button btn;
     String cylinder[]={"Select Cylinder Type","High Pressure Cylinder","Acetylene Cylinder","LPG Cylinder"};
    ArrayList<String> name;
-   String deliveryBoy="",gas="",number;
+   String deliveryBoy="",gas="",number,rate;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -116,9 +116,33 @@ public class AddRecordFragment extends Fragment implements AdapterView.OnItemSel
         date.setTimeZone(TimeZone.getTimeZone("GMT+5:30"));
         String time = date.format(currentLocalTime);
         HashMap<String,Object> hashMap = new HashMap<>();
+        FirebaseDatabase.getInstance().getReference("Rate Chart").child("Rate").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()){
+                    if(gas.equals("High Pressure Cylinder")) {
+                        rate = (String) snapshot.child("Hp").getValue();
+                    }
+                    else if(gas.equals("Acetylene Cylinder")){
+                        rate = (String) snapshot.child("Acetylene").getValue();
+                    }
+                    else if(gas.equals("LPG Cylinder")){
+                        rate = (String) snapshot.child("Lpg").getValue();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+        int r = Integer.parseInt(rate)*Integer.parseInt(number);
+        hashMap.put("amount",r);
         hashMap.put("name",deliveryBoy);
         hashMap.put("cylinder type",gas);
         hashMap.put("number of cylinder",number);
+        hashMap.put("returned cylinder","N.A");
         FirebaseDatabase.getInstance().getReference("Record").child(time).setValue(hashMap);
         Toast.makeText(getActivity(),"Record Added Successfully",Toast.LENGTH_SHORT).show();
         Fragment someFragment = new ButtonFragment();

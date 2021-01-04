@@ -25,9 +25,9 @@ public class NewSupplierFormFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_newsupplierform, container, false);
-        et = view.findViewById(R.id.name);
-        et1 = view.findViewById(R.id.mobilenumber);
-        et2 = view.findViewById(R.id.area);
+        et = view.findViewById(R.id.Lpgcylinder);
+        et1 = view.findViewById(R.id.Hpcylinder);
+        et2 = view.findViewById(R.id.ACylinder);
         btn = view.findViewById(R.id.btn);
         et3 = view.findViewById(R.id.code);
         btn.setOnClickListener(new View.OnClickListener() {
