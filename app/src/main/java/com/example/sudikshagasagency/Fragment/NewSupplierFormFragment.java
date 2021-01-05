@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.sudikshagasagency.Activity.HomeActivity;
 import com.example.sudikshagasagency.R;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -25,6 +26,7 @@ public class NewSupplierFormFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_newsupplierform, container, false);
+        HomeActivity.currentFragment="NewFragment";
         et = view.findViewById(R.id.Lpgcylinder);
         et1 = view.findViewById(R.id.Hpcylinder);
         et2 = view.findViewById(R.id.ACylinder);

@@ -13,7 +13,8 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:padding="8dp">
+        android:padding="8dp"
+        android:id="@+id/card_view">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -24,29 +25,33 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="Rate"
-                android:textSize="18dp"
-                android:textStyle="bold|italic" />
+                android:textSize="24dp"
+                android:textStyle="bold|italic"
+                android:textColor="@color/black"/>
         <TextView
             android:layout_marginLeft="10dp"
             android:layout_marginTop="8dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18dp"
-            android:id="@+id/LPGcylinder"/>
+            android:id="@+id/LPGcylinder"
+            android:textColor="@color/black"/>
             <TextView
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18dp"
-                android:id="@+id/HPcylinder"/>
+                android:id="@+id/HPcylinder"
+                android:textColor="@color/black"/>
             <TextView
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="8dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="18dp"
-                android:id="@+id/Acylinder"/>
+                android:id="@+id/Acylinder"
+                android:textColor="@color/black"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

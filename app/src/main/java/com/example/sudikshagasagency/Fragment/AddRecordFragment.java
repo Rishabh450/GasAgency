@@ -17,6 +17,8 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.sudikshagasagency.Activity.HomeActivity;
+import com.example.sudikshagasagency.ModalClass.Record;
 import com.example.sudikshagasagency.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -37,11 +39,11 @@ public class AddRecordFragment extends Fragment implements AdapterView.OnItemSel
     Button btn;
     String cylinder[]={"Select Cylinder Type","High Pressure Cylinder","Acetylene Cylinder","LPG Cylinder"};
    ArrayList<String> name;
-   String deliveryBoy="",gas="",number,rate;
+   String deliveryBoy="",gas="",number,rate="";
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_addrecord, container, false);
+        View view = inflater.inflate(R.layout.fragment_addrecord, container, false);HomeActivity.currentFragment = "AddRecordFragment";
     spinnerName = view.findViewById(R.id.spinnerName);
     spinnerCylinderName = view.findViewById(R.id.spinnerCylinderName);
     numberofCylinder = view.findViewById(R.id.numberofCylinders);
@@ -109,25 +111,22 @@ public class AddRecordFragment extends Fragment implements AdapterView.OnItemSel
 
     }
 
-    public void submit(String deliveryBoy,String gas,String number){
+    public void submit(String deliveryBoy,String gas,String number) {
         Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT+5:30"));
         Date currentLocalTime = cal.getTime();
         DateFormat date = new SimpleDateFormat("dd MMM,yyyy hh:mm a");
         date.setTimeZone(TimeZone.getTimeZone("GMT+5:30"));
         String time = date.format(currentLocalTime);
-        HashMap<String,Object> hashMap = new HashMap<>();
-        FirebaseDatabase.getInstance().getReference("Rate Chart").child("Rate").addListenerForSingleValueEvent(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference("Rate Chart").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()){
-                    if(gas.equals("High Pressure Cylinder")) {
+                if (snapshot.exists()) {
+                    if (gas.equals("High Pressure Cylinder")) {
                         rate = (String) snapshot.child("Hp").getValue();
-                    }
-                    else if(gas.equals("Acetylene Cylinder")){
+                    } else if (gas.equals("Acetylene Cylinder")) {
                         rate = (String) snapshot.child("Acetylene").getValue();
-                    }
-                    else if(gas.equals("LPG Cylinder")){
-                        rate = (String) snapshot.child("Lpg").getValue();
+                    } else if (gas.equals("LPG Cylinder")) {
+                        rate = (String) snapshot.child("LPG").getValue();
                     }
                 }
             }
@@ -137,18 +136,16 @@ public class AddRecordFragment extends Fragment implements AdapterView.OnItemSel
 
             }
         });
-        int r = Integer.parseInt(rate)*Integer.parseInt(number);
-        hashMap.put("amount",r);
-        hashMap.put("name",deliveryBoy);
-        hashMap.put("cylinder type",gas);
-        hashMap.put("number of cylinder",number);
-        hashMap.put("returned cylinder","N.A");
-        FirebaseDatabase.getInstance().getReference("Record").child(time).setValue(hashMap);
-        Toast.makeText(getActivity(),"Record Added Successfully",Toast.LENGTH_SHORT).show();
+        DateFormat df = new SimpleDateFormat("dd MMM yyyy");
+        df.setTimeZone(TimeZone.getTimeZone("GMT+5:30"));
+        String currentdate = df.format(currentLocalTime);
+        Record r = new Record(currentdate, rate, "N.A", gas, deliveryBoy, number, "N.A", time);
+        FirebaseDatabase.getInstance().getReference("Record").child(time).setValue(r);
+        Toast.makeText(getActivity(), "Record Added Successfully", Toast.LENGTH_SHORT).show();
         Fragment someFragment = new ButtonFragment();
         assert getFragmentManager() != null;
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.frame_container, someFragment );
+        transaction.replace(R.id.frame_container, someFragment);
         transaction.addToBackStack(null);
         transaction.commit();
     }

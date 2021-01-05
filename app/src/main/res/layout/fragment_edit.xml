@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,7 +8,6 @@
     android:orientation="vertical"
     android:gravity="center"
     android:layout_gravity="center">
-
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -31,10 +31,10 @@
                 tools:ignore="MissingClass">
 
                 <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/Lpgcylinder"
+                    android:id="@+id/cylinder"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Name"
+                    android:hint="Cylinder Returned"
                     android:textColorHint="#7A8089" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -45,47 +45,18 @@
                 android:layout_margin="20dp">
 
                 <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/Hpcylinder"
+                    android:id="@+id/amount"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Mobile Number"
+                    android:hint="Amount given"
                     android:textColorHint="#7A8089" />
 
             </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp">
-
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/ACylinder"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Area"
-                    android:textColorHint="#7A8089" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp">
-
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/code"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="Deliveryu Boy Code"
-                    android:textColorHint="#7A8089" />
-
-            </com.google.android.material.textfield.TextInputLayout>
-
             <Button
                 android:id="@+id/btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Add" />
+                android:text="Edit" />
 
         </LinearLayout>
 
