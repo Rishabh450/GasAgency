@@ -18,11 +18,21 @@
         tools:ignore="MissingConstraints">
 
         <LinearLayout
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="vertical"
-            android:padding="16dp">
+            android:padding="20dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/proximanova"
+                android:text="Set Cylinder Rates"
+                android:textColor="@color/black"
+                android:textSize="24dp"
+                android:textStyle="bold" />
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
@@ -35,6 +45,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="LPG Cylinder"
+                    android:drawableLeft="@drawable/ic_rupee_symbol"
+                    android:drawablePadding="10dp"
+                    android:inputType="number"
                     android:textColorHint="#7A8089" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -49,6 +62,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="High Pressure Cylinder"
+                    android:drawableLeft="@drawable/ic_rupee_symbol"
+                    android:drawablePadding="10dp"
+                    android:inputType="number"
                     android:textColorHint="#7A8089" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -63,6 +79,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Acetylene Cylinder"
+                    android:drawableLeft="@drawable/ic_rupee_symbol"
+                    android:drawablePadding="10dp"
+                    android:inputType="number"
                     android:textColorHint="#7A8089" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -71,7 +90,10 @@
                 android:id="@+id/btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ok" />
+                android:background="@drawable/custom_butt"
+                android:fontFamily="@font/proximanova"
+                android:textFontWeight="600"
+                android:text="Submit changes" />
 
         </LinearLayout>
 

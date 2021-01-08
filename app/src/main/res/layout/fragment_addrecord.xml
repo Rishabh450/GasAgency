@@ -24,12 +24,14 @@
             android:orientation="vertical"
             android:padding="16dp">
             <Spinner
+                style="@style/spinner_style"
                 android:id="@+id/spinnerName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="20dp"/>
 
             <Spinner
+                style="@style/spinner_style"
                 android:id="@+id/spinnerCylinderName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

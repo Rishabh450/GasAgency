@@ -7,6 +7,8 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="290dp"
+        app:cardCornerRadius="10dp"
+        app:cardElevation="6dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="80dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -15,53 +17,93 @@
         app:layout_constraintTop_toTopOf="parent"
         android:padding="8dp"
         android:id="@+id/card_view">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="15dp">
+
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Rate"
+                android:fontFamily="@font/proximanova"
+                android:text="Cylinder Rates"
+                android:textColor="@color/black"
                 android:textSize="24dp"
-                android:textStyle="bold|italic"
-                android:textColor="@color/black"/>
-        <TextView
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="18dp"
-            android:id="@+id/LPGcylinder"
-            android:textColor="@color/black"/>
-            <TextView
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="8dp"
+                android:textStyle="bold" />
+
+            <ProgressBar
+                android:id="@+id/cyc_progress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18dp"
+                android:layout_marginTop="10dp"
+                android:indeterminateDrawable="@drawable/progress_style_round" />
+
+            <TextView
+                android:id="@+id/LPGcylinder"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/proximanova"
+                android:textColor="@color/black"
+                android:textSize="18dp" />
+
+            <TextView
                 android:id="@+id/HPcylinder"
-                android:textColor="@color/black"/>
-            <TextView
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="8dp"
+
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/proximanova"
+                android:textColor="@color/black"
+                android:textSize="18dp" />
+
+            <TextView
                 android:id="@+id/Acylinder"
-                android:textColor="@color/black"/>
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/proximanova"
+                android:textColor="@color/black"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/view_edit_order_id"
+                android:layout_width="match_parent"
+                android:layout_height="17dp"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="20dp"
+
+                android:drawableLeft="@drawable/ic_edit"
+                android:gravity="center"
+                android:text="EDIT CYLINDER PRICE"
+
+                android:textColor="#1E40B7"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sitting" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/newSupplier"
         android:layout_width="290dp"
+        android:fontFamily="@font/proximanova"
+        android:textFontWeight="600"
         android:layout_height="wrap_content"
         android:layout_marginBottom="25dp"
         android:text="New Delivery Boy"
-        android:textSize="24dp"
+        android:textSize="18sp"
+        android:background="@drawable/custom_butt"
         app:layout_constraintBottom_toTopOf="@+id/addrecord"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
@@ -73,7 +115,10 @@
         android:layout_height="50dp"
         android:layout_marginBottom="24dp"
         android:text="Add Record"
-        android:textSize="24dp"
+        android:fontFamily="@font/proximanova"
+        android:textFontWeight="600"
+        android:background="@drawable/custom_butt"
+        android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@+id/record"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -85,7 +130,10 @@
         android:layout_height="50dp"
         android:layout_marginBottom="97dp"
         android:text="Record"
-        android:textSize="24dp"
+        android:textSize="18sp"
+        android:fontFamily="@font/proximanova"
+        android:textFontWeight="600"
+        android:background="@drawable/custom_butt"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"

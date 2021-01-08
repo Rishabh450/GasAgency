@@ -16,8 +16,33 @@
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
 
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">#FFC81406</item>
-        <item name="colorPrimaryDark">#FF9A0E04</item>
-        <item name="colorAccent">#03DAC5</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColor">@color/colorDarkBlue</item>
+        <item name="buttonStyle">@style/ButtonTheme</item>
     </style>
+
+    <style name="ButtonTheme" parent="Widget.AppCompat.Button">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:background">@drawable/custom_butt</item>
+        <item name="android:radius">6dp</item>
+        <item name="android:fontFamily">@font/proximanova</item>
+        <item name="android:bottomRightRadius">6dp</item>
+        <item name="android:topRightRadius">6dp</item>
+        <item name="android:topLeftRadius">6dp</item>
+        <item name="android:bottomLeftRadius">6dp</item>
+    </style>
+    <style name="spinner_style" parent="@style/Widget.AppCompat.Spinner">
+        <item name="android:background">@drawable/bg_spinner_c7</item>
+        <item name="overlapAnchor">true</item>
+        <item name="android:popupBackground">#DFFFFFFF</item>
+    </style>
+
+    <style name="MyAnimation.Window" parent="@android:style/Animation.Activity">
+        <item name="android:windowEnterAnimation">@anim/anim_in</item>
+        <item name="android:windowExitAnimation">@anim/anim_out</item>
+    </style>
+
+
 </resources>

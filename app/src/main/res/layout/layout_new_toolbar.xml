@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
+    android:elevation="6dp"
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
     android:weightSum="100"
@@ -14,6 +15,7 @@
         android:layout_weight="100"
         android:id="@+id/title_new"
         android:textStyle="bold"
+        android:fontFamily="@font/proximanova"
         android:text="SUDIKSHA INDANE GAS AGENCY"
         android:textColor="#fff"
         android:gravity="center"

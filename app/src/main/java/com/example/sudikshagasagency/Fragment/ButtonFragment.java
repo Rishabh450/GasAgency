@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -24,6 +25,7 @@ public class ButtonFragment extends Fragment {
     CardView card_view;
     TextView tv, tv1, tv2;
     Button newSupplier, addrecord, record;
+    ProgressBar progressBar;
 
     @Nullable
     @Override
@@ -31,6 +33,7 @@ public class ButtonFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_button, container, false);
         HomeActivity.currentFragment = "ButtonFragment";
         card_view = view.findViewById(R.id.card_view);
+        progressBar = view.findViewById(R.id.cyc_progress);
         card_view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -45,9 +48,10 @@ public class ButtonFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
-                    tv.setText("LPG cylinder - Rs " + (String) snapshot.child("LPG").getValue());
-                    tv1.setText("High Pressure - Rs " + (String) snapshot.child("Hp").getValue());
-                    tv2.setText("Acetylen - Rs " + (String) snapshot.child("Acetylene").getValue());
+                    progressBar.setVisibility(View.GONE);
+                    tv.setText("LPG cylinder - " + getResources().getString(R.string.rupee_symbol) + (String) snapshot.child("LPG").getValue());
+                    tv1.setText("High Pressure - "+ getResources().getString(R.string.rupee_symbol) + (String) snapshot.child("Hp").getValue());
+                    tv2.setText("Acetylen - " + getResources().getString(R.string.rupee_symbol)+ (String) snapshot.child("Acetylene").getValue());
                 }
             }
 

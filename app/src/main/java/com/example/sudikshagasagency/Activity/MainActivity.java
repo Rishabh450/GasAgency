@@ -17,11 +17,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(
                 WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setContentView(R.layout.activity_main);
+
         logo = findViewById(R.id.logo);
         logo.setAlpha(0f);
         logo.animate().alpha(1f).setDuration(2000L);
@@ -29,8 +30,9 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 try {
                     Thread.sleep(3000L);
-                    Intent intent = new Intent((Context)MainActivity.this, HomeActivity.class);
+                    Intent intent = new Intent((Context)MainActivity.this, SignInActivity.class);
                     MainActivity.this.startActivity(intent);
+                    finish();
                 } catch (Exception var2) {
                     var2.printStackTrace();
                 }
