@@ -114,7 +114,7 @@ public class AddRecordFragment extends Fragment implements AdapterView.OnItemSel
     public void submit(String deliveryBoy,String gas,String number) {
         Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT+5:30"));
         Date currentLocalTime = cal.getTime();
-        DateFormat date = new SimpleDateFormat("dd MMM,yyyy hh:mm a");
+        DateFormat date = new SimpleDateFormat("yyyy MMM dd hh:mm a");
         date.setTimeZone(TimeZone.getTimeZone("GMT+5:30"));
         String time = date.format(currentLocalTime);
         FirebaseDatabase.getInstance().getReference("Rate Chart").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -136,7 +136,7 @@ public class AddRecordFragment extends Fragment implements AdapterView.OnItemSel
 
             }
         });
-        DateFormat df = new SimpleDateFormat("dd MMM yyyy");
+        DateFormat df = new SimpleDateFormat("yyyy MMM dd");
         df.setTimeZone(TimeZone.getTimeZone("GMT+5:30"));
         String currentdate = df.format(currentLocalTime);
         Record r = new Record(currentdate, rate, "N.A", gas, deliveryBoy, number, "N.A", time);
