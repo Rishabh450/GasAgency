@@ -82,7 +82,7 @@
                     android:paddingLeft="10dp"
 
                     app:layout_constraintStart_toStartOf="parent"
-                    android:text="Are you sure you want to log out of Use My Cards?"
+                    android:text="Are you sure you want to log out?"
                     android:fontFamily="@font/open_sans"
 
                     android:layout_height="wrap_content">

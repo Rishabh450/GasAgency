@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.OvershootInterpolator;
+import android.view.animation.ScaleAnimation;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -89,6 +91,7 @@ public class ButtonFragment extends Fragment {
 
     public void fragment(Fragment someFragment) {
         assert getFragmentManager() != null;
+
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.frame_container, someFragment);
         transaction.addToBackStack(null);

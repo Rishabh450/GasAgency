@@ -12,10 +12,10 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
-
+            android:background="@color/colorPrimaryDark"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#FFC81406">
+            >
             <include
                 layout="@layout/layout_new_toolbar">
             </include>

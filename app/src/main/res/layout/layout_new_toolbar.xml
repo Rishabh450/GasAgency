@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize"
     android:weightSum="100"
-    android:background="#FA0404"
+    android:background="@color/colorPrimaryDark"
     android:gravity="center_vertical">
 
 
@@ -15,11 +15,10 @@
         android:layout_weight="100"
         android:id="@+id/title_new"
         android:textStyle="bold"
-        android:fontFamily="@font/proximanova"
+        android:fontFamily="@font/poppins_semibold"
         android:text="SUDIKSHA INDANE GAS AGENCY"
         android:textColor="#fff"
         android:gravity="center"
-        android:textSize="20sp"
         android:visibility="visible"/>
 
 

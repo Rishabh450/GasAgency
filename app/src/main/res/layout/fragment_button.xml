@@ -37,7 +37,7 @@
                 android:layout_gravity="center"
                 android:fontFamily="@font/proximanova"
                 android:text="Cylinder Rates"
-                android:textColor="@color/black"
+                android:textColor="@color/colorDarkBlue"
                 android:textSize="24dp"
                 android:textStyle="bold" />
 
@@ -55,7 +55,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/proximanova"
-                android:textColor="@color/black"
+                android:textColor="@color/colorDarkBlue"
                 android:textSize="18dp" />
 
             <TextView
@@ -66,7 +66,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/proximanova"
-                android:textColor="@color/black"
+                android:textColor="@color/colorDarkBlue"
                 android:textSize="18dp" />
 
             <TextView
@@ -77,7 +77,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/proximanova"
-                android:textColor="@color/black"
+                android:textColor="@color/colorDarkBlue"
                 android:textSize="18dp" />
 
             <TextView
@@ -107,6 +107,8 @@
         android:elevation="4dp"
         android:clickable="true"
         android:focusable="true"
+        android:textColor="@color/colorDarkBlue"
+
         android:foreground="?attr/selectableItemBackgroundBorderless"
         android:gravity="center"
         android:drawableStart="@drawable/ic_baseline_person_add_24"
@@ -129,6 +131,8 @@
         android:elevation="4dp"
         android:clickable="true"
         android:focusable="true"
+        android:textColor="@color/colorDarkBlue"
+
         android:foreground="?attr/selectableItemBackgroundBorderless"
         android:text="Add Record"
         android:drawableStart="@drawable/ic_baseline_library_add_24"
@@ -148,11 +152,13 @@
         android:layout_height="50dp"
         android:elevation="4dp"
         android:clickable="true"
+        android:textColor="@color/colorDarkBlue"
+
         android:focusable="true"
         android:foreground="?attr/selectableItemBackgroundBorderless"
         android:layout_marginBottom="97dp"
         android:gravity="center"
-        android:text="Record"
+        android:text="View Record"
         android:textSize="18sp"
         android:fontFamily="@font/proximanova"
         android:textFontWeight="600"
