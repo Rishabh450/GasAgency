@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.view.animation.OvershootInterpolator;
 import android.view.animation.ScaleAnimation;
 import android.widget.DatePicker;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -44,6 +45,8 @@ public class RecordFragment extends Fragment {
     Calendar myCalendar;
     String from="",to="";
     ProgressBar cyc_progress;
+    ImageView img;
+    TextView tvheader;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -56,6 +59,8 @@ public class RecordFragment extends Fragment {
          myCalendar = Calendar.getInstance();
         tfrom = view.findViewById(R.id.from);
         tto  = view.findViewById(R.id.to);
+        img = view.findViewById(R.id.img);
+        tvheader = view.findViewById(R.id.tv_header);
         cyc_progress = view.findViewById(R.id.cyc_progress);
         fetchRecords();
         DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
@@ -144,6 +149,16 @@ public class RecordFragment extends Fragment {
                     adapter = new RecordAdapter(list,ctx);
                     recyclerView.setAdapter(adapter);
                     cyc_progress.setVisibility(View.GONE);
+                    if(list.isEmpty())
+                    {
+                        img.setVisibility(View.VISIBLE);
+                        tvheader.setVisibility(View.VISIBLE);
+                    }
+                    else
+                    {
+                        img.setVisibility(View.GONE);
+                        tvheader.setVisibility(View.GONE);
+                    }
 
                 }
 

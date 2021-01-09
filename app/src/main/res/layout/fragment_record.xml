@@ -49,6 +49,34 @@
         android:text="Apply Filter"
         android:gravity="center"
         android:focusable="false"/>
+
+    <ImageView
+
+        android:id="@+id/img"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="64dp"
+        android:src="@drawable/ic_empty_no_active_matches_sales"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </ImageView>
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/tv_header"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/img"
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="No Records Found"
+        android:textColor="@color/colorDarkBlue"
+
+        android:layout_height="wrap_content">
+
+    </TextView>
     <ProgressBar
 
         android:id="@+id/cyc_progress"
