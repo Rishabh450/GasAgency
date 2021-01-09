@@ -3,21 +3,34 @@ package com.example.sudikshagasagency.ModalClass;
 public class Record {
     private String name;
     private String Date;
-    private String totalcylinder;
-    private String cylinderreturned;
+    private int totalcylinder;
+    private int cylinderreturned;
     private int rate;
-    private String amountgiven;
+    private int amountgiven;
     private String cylindertype;
     private String time;
     private long code;
     private int total_amount;
+    private String picture ;
+    private String timeStamp;
     public Record(){
 
     }
-    public Record(String Date,int amount,String amount_given,String cylinder_type,String name,String number_of_cylinder,String returned_cylinder,String time, long code,int total_amount){
+
+    public String getTimeStamp() {
+        return timeStamp;
+    }
+
+    public void setTimeStamp(String timeStamp) {
+        this.timeStamp = timeStamp;
+    }
+
+    public Record(String Date, int amount, int amount_given, String cylinder_type, String name, int number_of_cylinder, int returned_cylinder, String time, long code, int total_amount, String picture, String timeStamp){
         this.name = name;
         this.code = code;
         this.Date =Date;
+        this.picture = picture;
+        this.timeStamp = timeStamp ;
         this.total_amount = total_amount;
         this.rate = amount;
         this.cylindertype = cylinder_type;
@@ -29,6 +42,14 @@ public class Record {
 
     public String getName() {
         return name;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
     }
 
     public void setName(String name) {
@@ -43,19 +64,19 @@ public class Record {
         Date = date;
     }
 
-    public String getTotalcylinder() {
+    public int getTotalcylinder() {
         return totalcylinder;
     }
 
-    public void setTotalcylinder(String totalcylinder) {
+    public void setTotalcylinder(int totalcylinder) {
         this.totalcylinder = totalcylinder;
     }
 
-    public String getCylinderreturned() {
+    public int getCylinderreturned() {
         return cylinderreturned;
     }
 
-    public void setCylinderreturned(String cylinderreturned) {
+    public void setCylinderreturned(int cylinderreturned) {
         this.cylinderreturned = cylinderreturned;
     }
 
@@ -83,11 +104,11 @@ public class Record {
         this.rate = rate;
     }
 
-    public String getAmountgiven() {
+    public int getAmountgiven() {
         return amountgiven;
     }
 
-    public void setAmountgiven(String amountgiven) {
+    public void setAmountgiven(int amountgiven) {
         this.amountgiven = amountgiven;
     }
 

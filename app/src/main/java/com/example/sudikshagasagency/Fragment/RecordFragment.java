@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -31,13 +32,14 @@ import java.util.List;
 import java.util.Locale;
 
 public class RecordFragment extends Fragment {
-    List<Record> list;
+    List<Record> list =  new ArrayList<>();
     RecyclerView recyclerView;
     RecordAdapter adapter;
     Context ctx;
     TextView t,t1;
     Calendar myCalendar;
     String from="",to="";
+    ProgressBar cyc_progress;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -46,6 +48,8 @@ public class RecordFragment extends Fragment {
          myCalendar = Calendar.getInstance();
         t = view.findViewById(R.id.from);
         t1 = view.findViewById(R.id.to);
+        cyc_progress = view.findViewById(R.id.cyc_progress);
+        fetchRecords();
         DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int monthOfYear,
@@ -87,34 +91,50 @@ public class RecordFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         ctx = getContext();
-        if(!(from.equals("")) && !(to.equals(""))){
-        FirebaseDatabase.getInstance().getReference("Record").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for(DataSnapshot dataSnapshot:snapshot.getChildren()){
-                    if(dataSnapshot.exists()){
-                        Record record = dataSnapshot.getValue(Record.class);
-                        if(record!=null)
-                            if(record.getDate().compareTo(from)>=0 && record.getDate().compareTo(to)<=0) {
-                                list.add(record);
-                            }
-                    }
-                }
-                adapter = new RecordAdapter(list,ctx);
-                recyclerView.setAdapter(adapter);
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });}
     return view;}
     private void updateLabel() {
         String myFormat = "yyyy MMM dd";
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
         t.setText(sdf.format(myCalendar.getTime()));
         from = t.getText().toString();
+    }
+
+    private void fetchRecords()
+    {
+
+        cyc_progress.setVisibility(View.VISIBLE);
+            list.clear();
+            FirebaseDatabase.getInstance().getReference("Record").addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    for(DataSnapshot dataSnapshot:snapshot.getChildren()){
+                        if(dataSnapshot.exists()){
+                            Record record = dataSnapshot.getValue(Record.class);
+                            if(record!=null) {
+                                if(!(from.equals("")) && !(to.equals("")))
+                                {
+                                    if (record.getDate().compareTo(from) >= 0 && record.getDate().compareTo(to) <= 0) {
+                                        list.add(record);
+                                    }
+                                }
+                                else
+                                    list.add(record);
+
+                            }
+                        }
+                    }
+                    adapter = new RecordAdapter(list,ctx);
+                    recyclerView.setAdapter(adapter);
+                    cyc_progress.setVisibility(View.GONE);
+
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+
+                }
+            });
     }
     private void updateLabel1() {
         String myFormat = "yyyy MMM dd";

@@ -42,13 +42,13 @@ public class EditFragment extends Fragment {
                     et1.requestFocus();
                 }
                 else{
-                    edit(cylinder,amount);
+                    edit(Integer.parseInt(cylinder.trim()) ,Integer.parseInt(amount.trim()) );
                 }
             }
         });
         return view;
     }
-    public void edit(String cylinder,String amount){
+    public void edit(int cylinder,int amount){
         FirebaseDatabase.getInstance().getReference("Record").child(time).child("cylinderreturned").setValue(cylinder);
         FirebaseDatabase.getInstance().getReference("Record").child(time).child("amountgiven").setValue(amount);
         Toast.makeText(getActivity(),"Updated Successfully",Toast.LENGTH_SHORT).show();

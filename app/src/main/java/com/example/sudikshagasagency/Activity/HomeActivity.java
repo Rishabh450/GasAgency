@@ -108,13 +108,7 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onBackPressed() {
 
-        Log.d("backstalkcount", String.valueOf(getSupportFragmentManager().getBackStackEntryCount()));
-        if(currentFragment.equals("AddRecordFragment")|| currentFragment.equals("NewFragment")|| currentFragment.equals("RecordFragment")){
-            getSupportFragmentManager().beginTransaction().replace(R.id.frame_container,
-                    new ButtonFragment()).commit();
-        }
-
-        else
+     
             super.onBackPressed();
     }
 
@@ -160,6 +154,6 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
                 dialog.dismiss();
             }
         });
-        
+
     }
 }

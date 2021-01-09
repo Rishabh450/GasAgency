@@ -112,6 +112,7 @@ public class NewSupplierFormFragment extends Fragment {
                 hashMap.put("code",code);
                 if(pickedImage==null)
                 {
+                    hashMap.put("picture","");
                     FirebaseDatabase.getInstance().getReference("Supplier").child(code).setValue(hashMap);
                     Toast.makeText(getActivity(),"Supplier Added Successfully",Toast.LENGTH_SHORT).show();
                     Fragment someFragment = new ButtonFragment();

@@ -35,6 +35,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Cylinder Returned"
+                    android:inputType="number"
                     android:textColorHint="#7A8089" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -49,6 +50,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Amount given"
+                    android:inputType="number"
+
                     android:textColorHint="#7A8089" />
 
             </com.google.android.material.textfield.TextInputLayout>
@@ -56,7 +59,7 @@
                 android:id="@+id/btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Edit" />
+                android:text="Submit Entries" />
 
         </LinearLayout>
 

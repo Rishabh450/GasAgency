@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:elevation="2dp"
+    android:id="@+id/root"
+
+    app:cardCornerRadius="10dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="match_parent"
+            android:layout_marginTop="20dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/status_image"
+            android:background="@drawable/ic_user_background"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/civProfileImage"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="9dp"
+                android:src="@drawable/ic_baseline_account_circle_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ivOnlineStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="9dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/civProfileImage" />
+
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="8dp"
+                android:text="Chinmayee"
+                android:fontFamily="@font/open_sans"
+                android:textSize="14sp"
+                android:textColor="@color/colorDarkBlue"
+                app:layout_constraintStart_toEndOf="@+id/civProfileImage"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvNumber"
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autoLink="phone"
+                android:layout_marginStart="10dp"
+                android:drawableStart="@drawable/ic_baseline_local_phone_24"
+                android:drawablePadding="3dp"
+                android:fontFamily="@font/open_sans"
+                android:textSize="12sp"
+                android:text="8340224427"
+                app:layout_constraintStart_toEndOf="@+id/civProfileImage"
+                app:layout_constraintTop_toBottomOf="@+id/tvName" />
+
+            <TextView
+                android:id="@+id/tvId"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:text="ID 706"
+                android:ellipsize="end"
+                android:fontFamily="@font/roboto_regular"
+                android:textSize="14sp"
+                android:textColor="@color/dgray1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:layout_marginTop="16dp"
+            android:id="@+id/tvDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+
+            android:drawablePadding="10dp"
+            android:fontFamily="@font/open_sans_semibold"
+            android:textColor="@color/colorDarkBlue"
+            android:text="5 Aug’20 - 20 Dec ’20"
+            android:textSize="12sp"
+            android:gravity="center"
+            app:drawableStartCompat="@drawable/ic_calendar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/tvOfferCategory"
+            android:layout_width="0dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/open_sans_semibold"
+            android:textColor="@color/colorDarkBlue"
+
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:drawablePadding="10dp"
+            android:text="On all categories"
+            android:textSize="12sp"
+            android:gravity="center"
+
+            app:drawableStartCompat="@drawable/ic_category"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/data_rec"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvOfferCategory">
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rate/cylinder"
+                android:fontFamily="@font/open_sans"
+                android:textSize="12sp"
+                android:textColor="@color/dgray1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvRate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text="₹4,999"
+                android:fontFamily="@font/open_sans"
+                android:textSize="12sp"
+                android:textColor="@color/colorDarkBlue"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView7" />
+            <TextView
+                android:layout_marginTop="20dp"
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Amount Returned"
+                android:fontFamily="@font/open_sans"
+                android:textSize="12sp"
+                android:textColor="@color/dgray1"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvRate" />
+            <TextView
+                android:id="@+id/tvAmtReturned"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text="₹4,999"
+                android:fontFamily="@font/open_sans"
+                android:textSize="12sp"
+                android:textColor="@color/colorDarkBlue"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+            <TextView
+                android:id="@+id/tvAmtDue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text="₹4,999"
+                android:textColor="@color/colorgreen"
+                android:textStyle="bold"
+                android:fontFamily="@font/open_sans"
+                app:layout_constraintStart_toStartOf="@+id/textView10"
+                app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cylinder taken"
+                android:fontFamily="@font/open_sans"
+                android:textSize="12sp"
+                android:textColor="@color/dgray1"
+                app:layout_constraintBottom_toTopOf="@+id/tvOfferType"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/tvOfferType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text="Discount"
+                android:fontFamily="@font/open_sans"
+                android:textSize="12sp"
+                android:textColor="@color/colorDarkBlue"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:text="Total Amount"
+                android:fontFamily="@font/open_sans"
+                android:textSize="12sp"
+                android:textColor="@color/dgray1"
+                app:layout_constraintStart_toEndOf="@+id/textView8"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:layout_marginTop="20dp"
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="36dp"
+                android:text="Amount Due"
+                android:fontFamily="@font/open_sans"
+                android:textSize="12sp"
+                android:textColor="@color/dgray1"
+                app:layout_constraintStart_toEndOf="@+id/textView8"
+                app:layout_constraintTop_toBottomOf="@+id/tvMinComission" />
+
+            <TextView
+                android:id="@+id/tvMinComission"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text="₹50"
+                android:textColor="@color/colorgreen"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/textView9"
+                app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cylinder Returned"
+                android:textColor="@color/dgray1"
+                android:fontFamily="@font/open_sans"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/tvDeliveryIn"
+                app:layout_constraintStart_toStartOf="@+id/textView9" />
+
+            <TextView
+                android:id="@+id/tvDeliveryIn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:fontFamily="@font/open_sans"
+                android:textSize="12sp"
+                android:textColor="@color/colorDarkBlue"
+                android:text="2 days"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/textView11" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:id="@+id/view_edit_order_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="20dp"
+            android:drawablePadding="10dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
+            android:drawableTop="@drawable/ic_edit"
+            android:gravity="center"
+            android:text="UPDATE ENTRIES"
+
+            android:textColor="#1E40B7"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/data_rec" />
+
+        <ImageView
+            android:layout_marginTop="20dp"
+            android:id="@+id/status_image"
+            app:layout_constraintTop_toBottomOf="@+id/view_edit_order_id"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/ic_successful"
+            android:layout_width="80dp"
+            android:layout_height="71dp">
+
+        </ImageView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

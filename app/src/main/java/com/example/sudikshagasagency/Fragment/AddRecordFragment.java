@@ -45,7 +45,9 @@ public class AddRecordFragment extends Fragment{
     Button btn;
     String cylinder[]={"Select Cylinder Type","High Pressure Cylinder","Acetylene Cylinder","LPG Cylinder"};
     int cylinderPrice[]={0,0,0};
+    String picture = "";
    ArrayList<String> name;
+    ArrayList<String> urls = new ArrayList<>();
     ArrayList<Long> code = new ArrayList<>();
     long delcode;
    String deliveryBoy="";
@@ -110,8 +112,11 @@ public class AddRecordFragment extends Fragment{
         } else if (gas.equals("LPG Cylinder")) {
             rate =  cylinderPrice[2];
         }
-        Record r = new Record(currentdate, rate, "N.A", gas, deliveryBoy, number, "N.A", time,delcode,(rate* Integer.parseInt(number)));
-        FirebaseDatabase.getInstance().getReference("Record").child(time).setValue(r);
+        DateFormat date1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        date1.setTimeZone(TimeZone.getTimeZone("GMT+5:30"));
+        String time1 = date1.format(currentLocalTime);
+        Record r = new Record(currentdate, rate, 0, gas, deliveryBoy, Integer.parseInt(number) , 0, time,delcode,(rate* Integer.parseInt(number)),picture,time1);
+        FirebaseDatabase.getInstance().getReference("Record").child(time1).setValue(r);
         Toast.makeText(getActivity(), "Record Added Successfully", Toast.LENGTH_SHORT).show();
         Fragment someFragment = new ButtonFragment();
         assert getFragmentManager() != null;
@@ -120,6 +125,7 @@ public class AddRecordFragment extends Fragment{
         transaction.addToBackStack(null);
         transaction.commit();
     }
+
 
     private void getDelBoys()
     {
@@ -131,6 +137,11 @@ public class AddRecordFragment extends Fragment{
                     name.add(nam);
                     long x = Long.parseLong(napshot.child("code").getValue().toString());
                     code.add(x );
+                    Log.d("picurl"," p");
+                    String pic =napshot.child("picture").getValue().toString();
+
+                    urls.add(pic);
+
                 }
 
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_dropdown_item, name);
@@ -141,10 +152,14 @@ public class AddRecordFragment extends Fragment{
                     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                         Log.d("spinnerselection",adapterView.getItemAtPosition(i).toString() + i);
                         deliveryBoy = adapterView.getItemAtPosition(i).toString();
-                        if(i>0)
-                        delcode = code.get(i - 1);
-                        else
+                        if(i>0) {
+                            delcode = code.get(i - 1);
+                            picture = urls.get(i-1);
+                        }
+                        else {
                             delcode = 0;
+                            picture = "";
+                        }
                     }
 
                     @Override
