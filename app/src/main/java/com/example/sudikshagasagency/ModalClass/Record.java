@@ -5,16 +5,20 @@ public class Record {
     private String Date;
     private String totalcylinder;
     private String cylinderreturned;
-    private String rate;
+    private int rate;
     private String amountgiven;
     private String cylindertype;
     private String time;
+    private long code;
+    private int total_amount;
     public Record(){
 
     }
-    public Record(String Date,String amount,String amount_given,String cylinder_type,String name,String number_of_cylinder,String returned_cylinder,String time){
+    public Record(String Date,int amount,String amount_given,String cylinder_type,String name,String number_of_cylinder,String returned_cylinder,String time, long code,int total_amount){
         this.name = name;
+        this.code = code;
         this.Date =Date;
+        this.total_amount = total_amount;
         this.rate = amount;
         this.cylindertype = cylinder_type;
         this.totalcylinder = number_of_cylinder;
@@ -55,11 +59,27 @@ public class Record {
         this.cylinderreturned = cylinderreturned;
     }
 
-    public String getRate() {
+    public long getCode() {
+        return code;
+    }
+
+    public void setCode(long code) {
+        this.code = code;
+    }
+
+    public int getTotal_amount() {
+        return total_amount;
+    }
+
+    public void setTotal_amount(int total_amount) {
+        this.total_amount = total_amount;
+    }
+
+    public int getRate() {
         return rate;
     }
 
-    public void setRate(String rate) {
+    public void setRate(int rate) {
         this.rate = rate;
     }
 
