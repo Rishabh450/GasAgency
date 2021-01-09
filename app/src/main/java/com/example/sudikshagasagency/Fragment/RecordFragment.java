@@ -25,18 +25,20 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
+import java.util.TimeZone;
 
 public class RecordFragment extends Fragment {
     List<Record> list =  new ArrayList<>();
     RecyclerView recyclerView;
     RecordAdapter adapter;
     Context ctx;
-    TextView t,t1;
+    TextView tfrom,tto;
     Calendar myCalendar;
     String from="",to="";
     ProgressBar cyc_progress;
@@ -46,8 +48,8 @@ public class RecordFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_record, container, false);
         HomeActivity.currentFragment="RecordFragment";
          myCalendar = Calendar.getInstance();
-        t = view.findViewById(R.id.from);
-        t1 = view.findViewById(R.id.to);
+        tfrom = view.findViewById(R.id.from);
+        tto  = view.findViewById(R.id.to);
         cyc_progress = view.findViewById(R.id.cyc_progress);
         fetchRecords();
         DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
@@ -70,7 +72,14 @@ public class RecordFragment extends Fragment {
                 updateLabel1();
             }
         };
-        t.setOnClickListener(new View.OnClickListener() {
+        TextView apply = view.findViewById(R.id.apply);
+        apply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fetchRecords();
+            }
+        });
+        tfrom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 new DatePickerDialog(getActivity(), date, myCalendar
@@ -78,7 +87,7 @@ public class RecordFragment extends Fragment {
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
-        t1.setOnClickListener(new View.OnClickListener() {
+        tto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 new DatePickerDialog(getActivity(), date1, myCalendar
@@ -94,10 +103,12 @@ public class RecordFragment extends Fragment {
 
     return view;}
     private void updateLabel() {
-        String myFormat = "yyyy MMM dd";
-        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-        t.setText(sdf.format(myCalendar.getTime()));
-        from = t.getText().toString();
+        DateFormat date1 = new SimpleDateFormat("yyyy-MM-dd");
+
+        date1.setTimeZone(TimeZone.getTimeZone("GMT+5:30"));
+        String time1 = date1.format(myCalendar.getTime());
+        from = time1;
+        tfrom.setText(from);
     }
 
     private void fetchRecords()
@@ -114,7 +125,7 @@ public class RecordFragment extends Fragment {
                             if(record!=null) {
                                 if(!(from.equals("")) && !(to.equals("")))
                                 {
-                                    if (record.getDate().compareTo(from) >= 0 && record.getDate().compareTo(to) <= 0) {
+                                    if (record.getTimeStamp().compareTo(from) >= 0 && record.getTimeStamp().compareTo(to) <= 0) {
                                         list.add(record);
                                     }
                                 }
@@ -137,9 +148,11 @@ public class RecordFragment extends Fragment {
             });
     }
     private void updateLabel1() {
-        String myFormat = "yyyy MMM dd";
-        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
-        t1.setText(sdf.format(myCalendar.getTime()));
-        to = t1.getText().toString();
+        DateFormat date1 = new SimpleDateFormat("yyyy-MM-dd");
+
+        date1.setTimeZone(TimeZone.getTimeZone("GMT+5:30"));
+        String time1 = date1.format(myCalendar.getTime());
+        to = time1;
+        tto.setText(to);
     }
 }

@@ -8,14 +8,14 @@
 <TextView
     android:layout_width="375dp"
     android:layout_height="50dp"
-    android:layout_marginTop="65dp"
+    android:layout_marginTop="10dp"
     android:id="@+id/from"
     android:layout_gravity="center"
     android:textSize="18dp"
     android:textColor="@color/black"
     android:text="From"
     android:gravity="center"
-    android:background="@color/teal_200"
+    android:background="@drawable/edit_text_background"
     android:focusable="false"/>
     <TextView
         android:layout_width="375dp"
@@ -25,8 +25,21 @@
         android:layout_gravity="center"
         android:textSize="18dp"
         android:textColor="@color/black"
-        android:background="@color/teal_200"
+        android:background="@drawable/edit_text_background"
         android:text="To"
+        android:gravity="center"
+        android:focusable="false"/>
+
+    <TextView
+        android:layout_width="375dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        android:id="@+id/apply"
+        android:layout_gravity="center"
+        android:textSize="18dp"
+        android:textColor="@color/black"
+        android:background="@drawable/edit_text_background"
+        android:text="Apply Filter"
         android:gravity="center"
         android:focusable="false"/>
     <ProgressBar

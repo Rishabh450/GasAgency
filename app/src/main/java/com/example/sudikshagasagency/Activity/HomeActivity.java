@@ -108,7 +108,6 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
     @Override
     public void onBackPressed() {
 
-     
             super.onBackPressed();
     }
 
