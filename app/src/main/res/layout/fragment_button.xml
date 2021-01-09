@@ -2,10 +2,15 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/ic_rectangle_auth"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <androidx.cardview.widget.CardView
+        android:elevation="4dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
         android:layout_width="290dp"
         app:cardCornerRadius="10dp"
         app:cardElevation="6dp"
@@ -94,11 +99,17 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <Button
+    <TextView
         android:id="@+id/newSupplier"
         android:layout_width="290dp"
         android:fontFamily="@font/proximanova"
         android:textFontWeight="600"
+        android:elevation="4dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
+        android:gravity="center"
+        android:drawableStart="@drawable/ic_baseline_person_add_24"
         android:layout_height="wrap_content"
         android:layout_marginBottom="25dp"
         android:text="New Delivery Boy"
@@ -109,12 +120,18 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
+    <TextView
         android:id="@+id/addrecord"
         android:layout_width="290dp"
+        android:gravity="center"
         android:layout_height="50dp"
         android:layout_marginBottom="24dp"
+        android:elevation="4dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
         android:text="Add Record"
+        android:drawableStart="@drawable/ic_baseline_library_add_24"
         android:fontFamily="@font/proximanova"
         android:textFontWeight="600"
         android:background="@drawable/custom_butt"
@@ -124,11 +141,17 @@
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
+    <TextView
         android:id="@+id/record"
         android:layout_width="290dp"
+        android:drawableStart="@drawable/ic_baseline_receipt_24"
         android:layout_height="50dp"
+        android:elevation="4dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackgroundBorderless"
         android:layout_marginBottom="97dp"
+        android:gravity="center"
         android:text="Record"
         android:textSize="18sp"
         android:fontFamily="@font/proximanova"

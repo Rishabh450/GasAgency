@@ -24,7 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 public class ButtonFragment extends Fragment {
     CardView card_view;
     TextView tv, tv1, tv2;
-    Button newSupplier, addrecord, record;
+    TextView newSupplier, addrecord, record;
     ProgressBar progressBar;
 
     @Nullable

@@ -1,16 +1,27 @@
 package com.example.sudikshagasagency.Activity;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.cardview.widget.CardView;
 
+import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.StrictMode;
 import android.util.Log;
+import android.view.ContextMenu;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.sudikshagasagency.Fragment.ButtonFragment;
@@ -42,10 +53,31 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        Log.d("menuclicked","yes");
+        if (item.getItemId() == R.id.signout) {
+            logoutDialog();
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
         mAuth = FirebaseAuth.getInstance();
+
 
         authStateListener = firebaseAuth -> {
             if(firebaseAuth.getCurrentUser()==null)
@@ -84,5 +116,50 @@ public class HomeActivity extends AppCompatActivity implements AdapterView.OnIte
 
         else
             super.onBackPressed();
+    }
+
+
+    private void logoutDialog()
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        LayoutInflater inflater = ((Activity) this).getLayoutInflater();
+
+
+        final View view = inflater.inflate(R.layout.confirm_layout, null);
+        builder.setView(view);
+        final Dialog dialog = builder.create();
+
+        dialog.setContentView(R.layout.confirm_layout);
+        dialog.getWindow().getAttributes().windowAnimations = R.style.MyAnimation_Window;
+        // (0x80000000, PorterDuff.Mode.MULTIPLY);
+        dialog.show();
+        CardView logout =  dialog.findViewById(R.id.logout_confirm);
+        CardView cancel_logout = (CardView) dialog.findViewById(R.id.cancel_logout);
+        ImageView cancel = (ImageView) dialog.findViewById(R.id.cancel);
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAuth.signOut();
+                dialog.dismiss();
+
+                // return false;
+            }
+
+
+        });
+        cancel_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
+        
     }
 }
