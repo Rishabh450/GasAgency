@@ -50,6 +50,7 @@ public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.ViewHolder
         holder.tvName.setText(r.getName());
         holder.tvDate.setText(r.getDate());
         holder.tvOfferCategory.setText(r.getCylindertype());
+        holder.tvNumber.setText(r.getPhNumber());
         holder.tvRate.setText(ctx.getString(R.string.rupee_symbol)+ String.valueOf((r.getRate())));
         holder.amtReturn.setText(ctx.getString(R.string.rupee_symbol)+ String.valueOf(r.getAmountgiven()));
         holder.returned.setText(String.valueOf(r.getCylinderreturned()));
@@ -57,24 +58,28 @@ public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.ViewHolder
         holder.tvMinComission.setText(ctx.getString(R.string.rupee_symbol)+ String.valueOf(r.getTotal_amount()));
         holder.amtDue.setText(ctx.getString(R.string.rupee_symbol)+  String.valueOf( r.getTotal_amount()- r.getAmountgiven()));
         holder.tvId.setText("ID : " + r.getCode());
+        if(!r.getPicture().isEmpty())
+        {
+            Glide.with(ctx)
+                    .load(r.getPicture())
+                    .apply(RequestOptions.circleCropTransform())
+                    .listener(new RequestListener<Drawable>() {
+                        @Override
+                        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
 
-        Glide.with(ctx)
-                .load(r.getPicture())
-                .apply(RequestOptions.circleCropTransform())
-                .listener(new RequestListener<Drawable>() {
-                    @Override
-                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                            return false;
+                        }
 
-                        return false;
-                    }
+                        @Override
+                        public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
 
-                    @Override
-                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                            return false;
+                        }
+                    })
+                    .into(holder.dp);
+        }
 
-                        return false;
-                    }
-                })
-                .into(holder.dp);
+
 
         if( r.getTotal_amount()- r.getAmountgiven()==0)
         {
@@ -93,6 +98,8 @@ public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.ViewHolder
                 activity.getSupportFragmentManager().beginTransaction().add(R.id.frame_container, myFragment).addToBackStack(null).commit();
                 Bundle args = new Bundle();
                 args.putString("id", r.getTimeStamp());
+                args.putInt("cylinder_lmt",r.getTotalcylinder());
+                args.putInt("amt_lmt",r.getTotal_amount());
                 myFragment.setArguments(args);
             }
         });
@@ -104,7 +111,7 @@ public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.ViewHolder
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView tvName,tvDate,tvOfferCategory,tvRate,amtReturn,returned,taken,amtDue,t8,tvMinComission,tvId;
+        TextView tvName,tvDate,tvOfferCategory,tvRate,amtReturn,returned,taken,amtDue,t8,tvMinComission,tvId,tvNumber;
         View mview; ImageView status_image,dp;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -121,6 +128,7 @@ public class RecordAdapter extends RecyclerView.Adapter<RecordAdapter.ViewHolder
             status_image = itemView.findViewById(R.id.status_image);
             tvId = itemView.findViewById(R.id.tvId);
             dp = itemView.findViewById(R.id.civProfileImage);
+            tvNumber =itemView.findViewById(R.id.tvNumber);
 
             mview = itemView;
         }

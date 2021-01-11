@@ -21,6 +21,8 @@ public class EditFragment extends Fragment {
     EditText et,et1;
     String time;
     Button btn;
+    int cylinder_lmt;
+    int amt_lmt;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -31,6 +33,8 @@ public class EditFragment extends Fragment {
         view.setAnimation(scale);
         assert getArguments() != null;
         time = getArguments().getString("id");
+        cylinder_lmt = getArguments().getInt("cylinder_lmt");
+        amt_lmt = getArguments().getInt("amt_lmt");
         et = view.findViewById(R.id.cylinder);
         et1 = view.findViewById(R.id.amount);
         btn = view.findViewById(R.id.btn);
@@ -43,8 +47,18 @@ public class EditFragment extends Fragment {
                     et.setError("Please enter Cylinder returned");
                     et.requestFocus();
                 }
+                else if(Integer.parseInt(cylinder.trim())>cylinder_lmt )
+                {
+                    et.setError("Maximum cylinders can be " + cylinder_lmt);
+                    et.requestFocus();
+                }
                 else if(amount.isEmpty()){
                     et1.setError("Please enter Amount Given");
+                    et1.requestFocus();
+                }
+                else if(Integer.parseInt(amount.trim())>amt_lmt)
+                {
+                    et1.setError("Maximum amount can be " + amt_lmt);
                     et1.requestFocus();
                 }
                 else{

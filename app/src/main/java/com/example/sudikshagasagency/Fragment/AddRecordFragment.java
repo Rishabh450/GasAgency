@@ -50,6 +50,7 @@ public class AddRecordFragment extends Fragment{
     String picture = "";
    ArrayList<String> name;
     ArrayList<String> urls = new ArrayList<>();
+    ArrayList<String> phNumbers = new ArrayList<>();
     ArrayList<Long> code = new ArrayList<>();
     long delcode;
    String deliveryBoy="";
@@ -121,7 +122,7 @@ public class AddRecordFragment extends Fragment{
         DateFormat date1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         date1.setTimeZone(TimeZone.getTimeZone("GMT+5:30"));
         String time1 = date1.format(currentLocalTime);
-        Record r = new Record(currentdate, rate, 0, gas, deliveryBoy, Integer.parseInt(number) , 0, time,delcode,(rate* Integer.parseInt(number)),picture,time1);
+        Record r = new Record(currentdate, rate, 0, gas, deliveryBoy, Integer.parseInt(number) , 0, time,delcode,(rate* Integer.parseInt(number)),picture,time1,phNumber);
         FirebaseDatabase.getInstance().getReference("Record").child(time1).setValue(r);
         Toast.makeText(getActivity(), "Record Added Successfully", Toast.LENGTH_SHORT).show();
         Fragment someFragment = new ButtonFragment();
@@ -133,6 +134,7 @@ public class AddRecordFragment extends Fragment{
     }
 
 
+    String phNumber = "";
     private void getDelBoys()
     {
         FirebaseDatabase.getInstance().getReference("Supplier").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -145,12 +147,13 @@ public class AddRecordFragment extends Fragment{
                     code.add(x );
                     Log.d("picurl"," p");
                     String pic =napshot.child("picture").getValue().toString();
+                    phNumbers.add(napshot.child("number").getValue().toString());
 
                     urls.add(pic);
 
                 }
 
-                if(getActivity().isDestroyed())
+                if(!isAdded())
                     return;
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(),android.R.layout.simple_spinner_dropdown_item, name);
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -163,10 +166,12 @@ public class AddRecordFragment extends Fragment{
                         if(i>0) {
                             delcode = code.get(i - 1);
                             picture = urls.get(i-1);
+                            phNumber = phNumbers.get(i-1);
                         }
                         else {
                             delcode = 0;
                             picture = "";
+                            phNumber = "";
                         }
                     }
 

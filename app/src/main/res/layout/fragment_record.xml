@@ -13,38 +13,45 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 <TextView
-    android:layout_width="375dp"
     android:layout_height="50dp"
-    android:layout_marginTop="10dp"
+    android:layout_width="match_parent"
+
+    android:layout_margin="10dp"
     android:id="@+id/from"
     android:layout_gravity="center"
+
     android:textSize="18dp"
-    android:textColor="@color/black"
-    android:text="From"
+    android:textColor="@color/colorDarkBlue"
+    android:fontFamily="@font/open_sans"
+    android:text="Start Date"
     android:gravity="center"
     android:background="@drawable/edit_text_background"
     android:focusable="false"/>
     <TextView
-        android:layout_width="375dp"
+        android:layout_width="match_parent"
+
+        android:layout_margin="10dp"
         android:layout_height="50dp"
-        android:layout_marginTop="5dp"
         android:id="@+id/to"
         android:layout_gravity="center"
         android:textSize="18dp"
-        android:textColor="@color/black"
+        android:textColor="@color/colorDarkBlue"
+        android:fontFamily="@font/open_sans"
         android:background="@drawable/edit_text_background"
-        android:text="To"
+        android:text="End Date"
         android:gravity="center"
         android:focusable="false"/>
 
     <TextView
-        android:layout_width="375dp"
+        android:layout_width="match_parent"
+
+        android:layout_margin="10dp"
         android:layout_height="50dp"
-        android:layout_marginTop="5dp"
         android:id="@+id/apply"
         android:layout_gravity="center"
         android:textSize="18dp"
-        android:textColor="@color/black"
+        android:textColor="@color/colorDarkBlue"
+        android:fontFamily="@font/open_sans"
         android:background="@drawable/edit_text_background"
         android:text="Apply Filter"
         android:gravity="center"
@@ -86,10 +93,11 @@
         android:indeterminateDrawable="@drawable/progress_style_round" />
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="10dp"/>
+       />
 </LinearLayout>
 </androidx.core.widget.NestedScrollView>

@@ -53,7 +53,7 @@ public class ButtonFragment extends Fragment {
                     progressBar.setVisibility(View.GONE);
                     tv.setText("LPG cylinder - " + getResources().getString(R.string.rupee_symbol) + (String) snapshot.child("LPG").getValue());
                     tv1.setText("High Pressure - "+ getResources().getString(R.string.rupee_symbol) + (String) snapshot.child("Hp").getValue());
-                    tv2.setText("Acetylen - " + getResources().getString(R.string.rupee_symbol)+ (String) snapshot.child("Acetylene").getValue());
+                    tv2.setText("Acetylene - " + getResources().getString(R.string.rupee_symbol)+ (String) snapshot.child("Acetylene").getValue());
                 }
             }
 

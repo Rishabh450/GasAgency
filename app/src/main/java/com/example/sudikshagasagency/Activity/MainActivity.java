@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         Thread background = new Thread() {
             public void run() {
                 try {
-                    Thread.sleep(3000L);
+                    Thread.sleep(2000L);
                     Intent intent = new Intent((Context)MainActivity.this, SignInActivity.class);
                     MainActivity.this.startActivity(intent);
                     finish();

@@ -13,8 +13,17 @@ public class Record {
     private int total_amount;
     private String picture ;
     private String timeStamp;
+    private String phNumber;
     public Record(){
 
+    }
+
+    public String getPhNumber() {
+        return phNumber;
+    }
+
+    public void setPhNumber(String phNumber) {
+        this.phNumber = phNumber;
     }
 
     public String getTimeStamp() {
@@ -25,9 +34,10 @@ public class Record {
         this.timeStamp = timeStamp;
     }
 
-    public Record(String Date, int amount, int amount_given, String cylinder_type, String name, int number_of_cylinder, int returned_cylinder, String time, long code, int total_amount, String picture, String timeStamp){
+    public Record(String Date, int amount, int amount_given, String cylinder_type, String name, int number_of_cylinder, int returned_cylinder, String time, long code, int total_amount, String picture, String timeStamp, String phNumber){
         this.name = name;
         this.code = code;
+        this.phNumber = phNumber;
         this.Date =Date;
         this.picture = picture;
         this.timeStamp = timeStamp ;

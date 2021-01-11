@@ -136,7 +136,7 @@ public class RecordFragment extends Fragment {
                             if(record!=null) {
                                 if(!(from.equals("")) && !(to.equals("")))
                                 {
-                                    if (record.getTimeStamp().compareTo(from) >= 0 && record.getTimeStamp().compareTo(to) <= 0) {
+                                    if ((record.getTimeStamp().substring(0,10)).compareTo(from) >= 0 && (record.getTimeStamp().substring(0,10)).compareTo(to) <= 0) {
                                         list.add(record);
                                     }
                                 }

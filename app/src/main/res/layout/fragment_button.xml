@@ -15,7 +15,7 @@
         app:cardCornerRadius="10dp"
         app:cardElevation="6dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,17 +35,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:fontFamily="@font/proximanova"
+                android:fontFamily="@font/poppins_semibold"
                 android:text="Cylinder Rates"
                 android:textColor="@color/colorDarkBlue"
                 android:textSize="24dp"
-                android:textStyle="bold" />
+              />
 
             <ProgressBar
                 android:id="@+id/cyc_progress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="50dp"
                 android:indeterminateDrawable="@drawable/progress_style_round" />
 
             <TextView
@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="8dp"
-                android:fontFamily="@font/proximanova"
+                android:fontFamily="@font/open_sans"
                 android:textColor="@color/colorDarkBlue"
                 android:textSize="18dp" />
 
@@ -65,7 +65,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="8dp"
-                android:fontFamily="@font/proximanova"
+                android:fontFamily="@font/open_sans"
                 android:textColor="@color/colorDarkBlue"
                 android:textSize="18dp" />
 
@@ -76,33 +76,32 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="8dp"
-                android:fontFamily="@font/proximanova"
+                android:fontFamily="@font/open_sans"
                 android:textColor="@color/colorDarkBlue"
                 android:textSize="18dp" />
 
             <TextView
                 android:id="@+id/view_edit_order_id"
                 android:layout_width="match_parent"
-                android:layout_height="17dp"
-                android:layout_alignParentTop="true"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content"
 
-                android:drawableLeft="@drawable/ic_edit"
+
+                android:drawableTop="@drawable/ic_edit"
+                android:drawablePadding="5dp"
                 android:gravity="center"
                 android:text="EDIT CYLINDER PRICE"
 
                 android:textColor="#1E40B7"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sitting" />
+               />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/newSupplier"
         android:layout_width="290dp"
-        android:fontFamily="@font/proximanova"
+        android:fontFamily="@font/open_sans"
         android:textFontWeight="600"
         android:elevation="4dp"
         android:clickable="true"
@@ -136,7 +135,7 @@
         android:foreground="?attr/selectableItemBackgroundBorderless"
         android:text="Add Record"
         android:drawableStart="@drawable/ic_baseline_library_add_24"
-        android:fontFamily="@font/proximanova"
+        android:fontFamily="@font/open_sans"
         android:textFontWeight="600"
         android:background="@drawable/custom_butt"
         android:textSize="18sp"
@@ -160,7 +159,7 @@
         android:gravity="center"
         android:text="View Record"
         android:textSize="18sp"
-        android:fontFamily="@font/proximanova"
+        android:fontFamily="@font/open_sans"
         android:textFontWeight="600"
         android:background="@drawable/custom_butt"
         app:layout_constraintBottom_toBottomOf="parent"
