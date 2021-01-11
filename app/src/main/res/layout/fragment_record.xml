@@ -57,6 +57,22 @@
         android:gravity="center"
         android:focusable="false"/>
 
+    <TextView
+        android:layout_width="match_parent"
+
+        android:layout_margin="10dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/getPdf"
+        android:layout_gravity="center"
+        android:textSize="18dp"
+        android:textColor="@color/colorDarkBlue"
+        android:fontFamily="@font/open_sans"
+        android:drawableTop="@drawable/ic_baseline_picture_as_pdf_24"
+        android:background="@drawable/edit_text_background"
+        android:text="Get PDF"
+        android:gravity="center"
+        android:focusable="false"/>
+
     <ImageView
 
         android:id="@+id/img"
