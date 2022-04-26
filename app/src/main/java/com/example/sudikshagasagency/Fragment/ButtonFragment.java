@@ -26,7 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 public class ButtonFragment extends Fragment {
     CardView card_view;
     TextView tv, tv1, tv2;
-    TextView newSupplier, addrecord, record;
+    TextView newSupplier, addrecord, record,balanceSheet;
     ProgressBar progressBar;
 
     @Nullable
@@ -83,6 +83,14 @@ public class ButtonFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Fragment someFragment = new RecordFragment();
+                fragment(someFragment);
+            }
+        });
+        balanceSheet=view.findViewById(R.id.balanceSheet);
+        balanceSheet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment someFragment = new BalanceSheet();
                 fragment(someFragment);
             }
         });

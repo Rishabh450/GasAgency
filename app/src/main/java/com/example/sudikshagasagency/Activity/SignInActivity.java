@@ -55,9 +55,6 @@ GoogleSignInClient mGoogleSignInClient;
         mAuth = FirebaseAuth.getInstance();
 
         configureGoogleSignIn();
-
-
-
     }
     public void configureGoogleSignIn()
     {

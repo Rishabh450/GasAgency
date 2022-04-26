@@ -36,14 +36,14 @@
 
                 android:layout_height="wrap_content">
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/civProfile"
-                android:layout_width="110dp"
-                android:layout_height="110dp"
-                android:src="@drawable/com_facebook_profile_picture_blank_square"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/civProfile"
+                    android:layout_width="110dp"
+                    android:layout_height="110dp"
+                    android:src="@drawable/facebook_profile_picture_blank_square"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
                 android:id="@+id/ivChangeProfilePhoto"
