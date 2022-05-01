@@ -46,7 +46,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.sudikshagasagency.Activity.HomeActivity;
-import com.example.sudikshagasagency.BuildConfig;
 import com.example.sudikshagasagency.ModalClass.Record;
 import com.example.sudikshagasagency.R;
 import com.example.sudikshagasagency.Adapter.RecordAdapter;

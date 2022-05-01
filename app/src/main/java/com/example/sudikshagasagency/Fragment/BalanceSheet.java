@@ -3,15 +3,20 @@ package com.example.sudikshagasagency.Fragment;
 import android.Manifest;
 import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.graphics.pdf.PdfDocument;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Gravity;
@@ -28,6 +33,7 @@ import android.widget.RelativeLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -41,6 +47,7 @@ import com.example.sudikshagasagency.Adapter.RecordAdapter;
 import com.example.sudikshagasagency.ModalClass.Record;
 import com.example.sudikshagasagency.ModalClass.Supplier;
 import com.example.sudikshagasagency.R;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -49,6 +56,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -131,6 +139,13 @@ public class BalanceSheet extends Fragment {
                 fetchRecords(view);
             }
         });
+        TextView getPdf = view.findViewById(R.id.getPdf);
+        getPdf.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                takeScreenShot();
+            }
+        });
         tfrom.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -148,6 +163,32 @@ public class BalanceSheet extends Fragment {
             }
         });
         return view;
+    }
+
+    private void takeScreenShot()
+    {
+        View u = ((Activity) getContext()).findViewById(R.id.hscrll1);
+
+        HorizontalScrollView z = (HorizontalScrollView) ((Activity) getContext()).findViewById(R.id.hscrll1);
+        int totalHeight = z.getChildAt(0).getHeight();
+        int totalWidth = z.getChildAt(0).getWidth();
+
+        Bitmap b = getBitmapFromView(u,totalHeight,totalWidth);
+        getPDf(b);
+
+    }
+
+    public Bitmap getBitmapFromView(View view, int totalHeight, int totalWidth) {
+
+        Bitmap returnedBitmap = Bitmap.createBitmap(totalWidth,totalHeight , Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(returnedBitmap);
+        Drawable bgDrawable = view.getBackground();
+        if (bgDrawable != null)
+            bgDrawable.draw(canvas);
+        else
+            canvas.drawColor(Color.WHITE);
+        view.draw(canvas);
+        return returnedBitmap;
     }
 
     private void updateLabel() {
@@ -429,6 +470,99 @@ public class BalanceSheet extends Fragment {
             }
         });
     }
+
+
+    private void getPDf(Bitmap recycler_view_bm)
+    {
+        Log.d("pdfEnter","enter");
+        Log.d("pdfEnter","screenshot taken");
+
+
+        try {
+
+
+
+            final File sdCard = Environment.getExternalStorageDirectory();
+
+
+
+            File dir = new File(sdCard.getAbsolutePath() + "/Sudiksha" + "/Records");
+            dir.mkdirs();
+            long t = System.currentTimeMillis();
+            String time = String.valueOf(t);
+
+            String fileName = "records."+"pdf";
+            fileName.trim();
+            Log.d("pathsssss", "onPictureTaken - wrote to " + fileName);
+
+            File outFile = new File(dir, fileName);
+            Log.d("pathssss", "onPictureTaken - wrote to " + outFile.getAbsolutePath());
+
+            FileOutputStream outStream = new FileOutputStream(outFile);
+            Log.d("pathssss", "pdf - wrote to " + outFile.getAbsolutePath());
+            Toast.makeText(getContext(),"Stored at Sudiksha/Records/records.pdf",Toast.LENGTH_LONG).show();
+
+            PdfDocument document = new PdfDocument();
+            PdfDocument.PageInfo pageInfo = new
+                    PdfDocument.PageInfo.Builder(recycler_view_bm.getWidth(), recycler_view_bm.getHeight(), 1).create();
+            PdfDocument.Page page = document.startPage(pageInfo);
+            recycler_view_bm.prepareToDraw();
+            Canvas c;
+            c = page.getCanvas();
+            c.drawBitmap(recycler_view_bm,0,0,null);
+            document.finishPage(page);
+            Log.d("pdfEnter","file created2");
+
+            try {
+                document.writeTo(outStream);
+            } catch (IOException ioException) {
+                Log.d("pdfEnter","file " + ioException.getMessage());
+
+                ioException.printStackTrace();
+            }
+            document.close();
+            View parentLayout = v.findViewById(android.R.id.content);
+            Snackbar snackbar = Snackbar
+                    .make(v , "PDF generated successfully.", Snackbar.LENGTH_LONG)
+                    .setAction("Open", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            displaypdf();
+                        }
+                    });
+
+            snackbar.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    String dir="/Sudiksha/Records";
+
+    public void displaypdf() {
+        StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
+        StrictMode.setVmPolicy(builder.build());
+        File file = null;
+        file = new File(Environment.getExternalStorageDirectory()+dir+ "/records.pdf");
+        Toast.makeText(getContext(), file.toString() , Toast.LENGTH_LONG).show();
+        if(file.exists()) {
+            Intent target = new Intent(Intent.ACTION_VIEW);
+            target.setDataAndType(Uri.fromFile(file), "application/pdf");
+            target.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
+
+            Intent intent = Intent.createChooser(target, "Open File");
+            try {
+                startActivity(intent);
+            } catch (ActivityNotFoundException e) {
+                // Instruct the user to install a PDF reader here, or something
+            }
+        }
+        else
+            Toast.makeText(getContext(), "File path is incorrect." , Toast.LENGTH_LONG).show();
+    }
+
 
     private void updateTotal(TextView t2v, TextView t3v, TextView t4v, TextView t5v, TextView t6v, TextView t7v, TextView t8v, TextView t9v) {
         t2v.setText(String.valueOf(hpcylinder1[0]));
